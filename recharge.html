@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>成长值页面</title>
+    <style>
+      body {
+        background-image: url("./images/5.jpg");
+        background-size: cover;
+      }
+
+      .container {
+        margin-top: 16%;
+        color: gold;
+        padding-bottom: 20%;
+        position: relative;
+      }
+
+      #counter {
+        font-size: 64px;
+        font-weight: bold;
+        position: absolute;
+        left: 10%;
+        width: 100%;
+        line-height: 88px;
+        top: 57%;
+      }
+
+      #percent {
+        font-size: 48px;
+        line-height: 100px;
+        text-align: center;
+        /* margin-top: 3%; */
+        width: 60%;
+        /* border: 10px solid rgba(255, 255, 255, .8);
+        border-radius: 50%; */
+        position: absolute;
+        left: 20%;
+        bottom:-5%;
+      }
+
+      img {
+        width: 20%;
+        height: 30%;
+        margin-top: 3%;
+      }
+
+      h1 {
+        text-align: center;
+        align-items: center;
+        font-size: 80px;
+        color: #fff;
+        text-align: center;
+        padding: 1% 3%;
+      }
+      .top_left {
+        color: #fff;
+        font-size: 48px;
+      }
+      .top_left img {
+        margin: 0;
+          width: 12rem;
+          border-radius: 50%;
+          vertical-align: middle;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="top_left">
+      <img src="./images/avatar.jpg" />
+      <span>叽饭饭</span>
+    </div>
+    <div class="container">
+      <div class="top">
+        <h1>积分排行</h1>
+      </div>
+      <div id="counter">
+        <div style="background-color:  rgba(0, 200, 252, .5);
+			height:6rem;border-radius: 3.5rem;width: 80%; text-align: center;">
+          成长值<span id="value">210378980</span>
+        </div>
+      </div>
+      <div id="percent">已超越<span id="progress">00.0</span>%的超核用户</div>
+    </div>
+
+    <script>
+      // 设置目标成长值和超越用户百分比
+      const targetValue = 210378980;
+      const targetPercent = 99.9;
+
+      // 设置计数器初始值和步长
+      let currentValue = 0;
+      const step = targetPercent / 50;
+
+      // 定义更新计数器和百分比的函数
+      const updateCounter = () => {
+        currentValue += step;
+        if (currentValue >= targetPercent) {
+          currentValue = targetPercent;
+          clearInterval(intervalId);
+        }
+
+        // 格式化数字
+        const formattedValue = String(Math.round(currentValue)).padStart(9, '0');
+        const formattedProgress = currentValue.toFixed(1).padStart(4, '0');
+
+        // document.getElementById("value").innerText = formattedValue;
+        document.getElementById("progress").innerText = formattedProgress;
+      };
+
+      // 启动计时器
+      const intervalId = setInterval(updateCounter, 10);
+    </script>
+  </body>
+
+</html>

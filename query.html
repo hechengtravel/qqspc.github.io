@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url("./images/10.jpg");
+        background-size: cover;
+      }
+
+      .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 10px solid transparent;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+        padding-top: 5%;
+        padding-left: 10%;
+        box-sizing: border-box;
+      }
+
+      .circle:before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 10px solid gray;
+      }
+
+      .circle:after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 10px solid goldenrod;
+        clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0 20%);
+      }
+
+      .fill {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        /* background-color: gray; */
+        clip-path: polygon(0 0, 0 0, 0% 100%, 0% 100%);
+      }
+
+      .progress {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        /* background-color: green; */
+        clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 75%);
+      }
+
+      .content {
+        position: absolute;
+        z-index: 2;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between
+      }
+
+      .top_left img {
+        width: 60px;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+
+      .czz {
+        font-size: 12px;
+        color: #fff;
+        background-color: #0A318F;
+        opacity: .8;
+        margin-top: 10%;
+        padding: 6px 5px;
+        border-radius: 5px;
+      }
+
+      .cy {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-align: center;
+        margin-top: 25%;
+      }
+
+      .jfdh {
+        display: flex;
+        justify-content: center;
+        margin-top: 10%;
+
+        color: #FCDB1B;
+      }
+
+      .jtleft,
+      .jtright {
+        width: 30px;
+        height: 30px;
+        /* background-color: white; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .jtleft {
+        color: #FCDB1B;
+        font-size: 86px;
+      }
+
+      .jtright {
+        color: #FCDB1B;
+        font-size: 86px;
+      }
+
+      .jf {
+        font-size: 36px;
+        padding: 0 20px;
+      }
+
+      .bottom {
+        background-color: rgba(250, 245, 245, 0.6);
+        padding: 3%;
+      }
+
+      .bottom_top {
+        color: #fff;
+        background-color: rgba(10, 49, 143, 0.7);
+        padding: 5%;
+        width: 65%;
+        margin-left: 12%;
+        border-radius: 20px;
+        margin-bottom: 6%;
+        text-align: center;
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        z-index: 99;
+        width: 60%;
+        justify-content: space-around;
+        border-radius: 10px;
+      }
+
+      li {
+        cursor: pointer;
+        padding: 3px 5px;
+        background-color: #f2f2f2;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      li:hover {
+        background-color: #e0e0e0;
+      }
+
+      ul li img {
+        width: 30px;
+      }
+
+      .bottom_bottom {
+        display: flex;
+        align-items: center;
+        padding-top: 0;
+        background-color: #fff;
+        border-radius: 6px;
+        padding: 3%;
+        justify-content: space-around
+      }
+
+      .btn {
+        background-color: #F4F3EF;
+        color: #C6B395;
+        padding: 3px 15px;
+        margin-left: 5%;
+        border-radius: 6px;
+      }
+
+      .left_kb img {
+        width: 50px;
+      }
+
+      .left_kb {
+        background-color: #F4F3EF;
+        border-radius: 10px;
+        padding: 0 1%;
+        text-align: center;
+      }
+
+      .left_zzj {
+        padding-right: 20%;
+      }
+
+      .zj_top {
+        display: flex;
+      }
+
+      .zj_top span:nth-child(1) {
+        color: gray;
+        font-size: 12px;
+        padding: 1%;
+        border: 1px solid #DCDCDC;
+        border-radius: 5px;
+        white-space: nowrap;
+        margin-right: 2%;
+      }
+
+      .zj_top span:nth-child(2) {
+        font-weight: bold;
+        white-space: nowrap;
+        font-size: 14px;
+        margin-left: 3%;
+      }
+
+      .zj_bottom {
+        color: gray;
+        display: flex;
+      }
+
+      .zj_bottom span:nth-child(1) {
+        font-size: 14px;
+        margin-right: 2%;
+      }
+
+      .zj_bottom span:nth-child(2) {
+        font-size: 18px;
+      }
+      .overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    /* Confirmation dialog styles */
+    #confirmation-dialog {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 20rem;
+      height: 25%;
+      background-color: white;
+      border-radius: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      z-index: 3;
+    }
+    .wxts{
+      font-size: 20px;
+      font-weight: bold;
+      padding-top: 1rem;
+    }
+    #confirmation-dialog p{
+      color: #909090;
+      font-size: 18px;
+    }
+    .bootom_btn {
+      display: flex;
+      border-top:3px solid #F8F8F8;
+      height: 35%;
+      
+    }
+    .bootom_btn div {
+      width: 10rem;
+      font-size: 20px;
+      font-weight: bold;
+      position: relative;
+      top: 25%;
+    }
+    .bootom_btn div:nth-child(1)::after{
+      content:'';
+      border-right:3px solid #F8F8F8;
+      height: 3rem;
+      position: absolute;
+      right: 0;
+      top: -0.6rem;
+    }
+    .bootom_btn div:nth-child(2){
+      color: #CFC892;
+    }
+    .swal2-container.swal2-center>.swal2-popup{
+      height: 3rem;
+      font-size: 14px;
+      text-align: center;
+      line-height: 10px;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="top">
+        <div class="top_left">
+          <img src="./images/avatar.jpg" />
+          <span>叽饭饭</span>
+        </div>
+        <div class="top_right">
+          <div class="circle">
+            <div class="progress"></div>
+            <div class="fill"></div>
+            <div class="content">99.9%</div>
+          </div>
+          <div class="czz">成长值 : 210378980</div>
+        </div>
+      </div>
+      <div class="cy">您已超越99.9%的用户</div>
+      <div class="jfdh">
+        <div class="jtleft">&lt;</div>
+        <div class="jf"><em>积分兑换</em></div>
+        <div class="jtright">&gt;</div>
+      </div>
+      <div class="bottom">
+        <div class="bottom_top">
+          <span>我的积分</span>
+          <span>210378980</span>
+        </div>
+        <div class="bottom_bottom">
+          <div class="left_kb">
+            <img src="./images/qb.png" />
+            <div>100</div>
+
+          </div>
+          <div class="left_zzj">
+            <div class="zj_top">
+              <span>日限100</span>
+              <span>100QB</span>
+            </div>
+            <div class="zj_bottom">
+              <span>50000&nbsp;积分</span>
+            </div>
+          </div>
+
+          <!-- <ul>
+          <li> 
+            <img src="./images/jb.png" />
+            <div>100</div>
+          </li>
+          <li> 
+            <img src="./images/jb.png" />
+            <div>300</div>
+          </li>
+          <li> 
+            <img src="./images/jb.png" />
+            <div>500</div>
+          </li>
+          <li> 
+            <img src="./images/jb.png" />
+            <div>800</div>
+          </li>
+        </ul> -->
+          <div class="btn">兑换</div>
+          <div id="confirmation-dialog" style="display: none;">
+            <div class="wxts">温馨提示</div>
+            <p>是否兑换该物品</p>
+            <div class="bootom_btn">
+              <div>取消</div>
+              <div>确认</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
+<script>
+
+    // 获取需要操作的元素
+  const btn = document.querySelector('.btn');
+  const score = document.querySelector('.bottom_top span:last-child');
+  const dialog = document.querySelector('#confirmation-dialog');
+  const cancelButton = document.querySelector('#confirmation-dialog .bootom_btn div:nth-child(1)');
+  const confirmButton = document.querySelector('#confirmation-dialog .bootom_btn div:nth-child(2)');
+  
+  cancelButton.addEventListener('click', hideConfirmationDialog);
+  confirmButton.addEventListener('click', handleConfirmation);
+
+  btn.addEventListener('click',function(){
+    dialog.style.display = 'block';
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+  })
+
+  function hideConfirmationDialog() {
+  const overlay = document.querySelector('.overlay');
+  overlay.parentNode.removeChild(overlay);
+  
+  const dialog = document.getElementById('confirmation-dialog');
+  dialog.style.display = 'none';
+}
+
+function handleConfirmation() {
+  let currentScore = parseInt(score.textContent);
+  if (currentScore >= 50000) {
+      currentScore -= 50000;
+       // 更新积分显示
+      score.textContent = currentScore;
+    
+  }
+  const overlay = document.querySelector('.overlay');
+  overlay.parentNode.removeChild(overlay);
+  
+  const dialog = document.getElementById('confirmation-dialog');
+  dialog.style.display = 'none';
+            Swal.fire({
+    toast: true,
+    position: 'center',
+    showConfirmButton: false,
+    timer: 1000,
+    type: 'success',
+    title: '兑换成功',
+})
+}
+  // 给按钮添加点击事件
+//   btn.addEventListener('click', function () {
+//     // dialog.style.display = 'block';
+//     // 创建确认弹框
+// //     Swal.fire({
+// //       title: '确认兑换',
+// //       text: '确定要兑换吗？',
+// //       showCancelButton: true,
+// //       cancelButtonText: '取消',
+// //       confirmButtonText: '确定',
+// //     }).then((result) => {
+// //       if (result.isConfirmed) {
+// //         // 获取当前积分
+// //         let currentScore = parseInt(score.textContent);
+// //         // 判断当前积分是否足够
+// //         if (currentScore >= 50000) {
+// //           // 积分足够，减少积分
+// //           currentScore -= 50000;
+// //           // 更新积分显示
+// //           score.textContent = currentScore;
+// //           // 弹出兑换成功提示
+// //           // Swal.fire('兑换成功', '', 'success');
+// //           Swal.fire({
+// //     toast: true,
+// //     position: 'top-end',
+// //     showConfirmButton: false,
+// //     timer: 3000,
+// //     type: 'success',
+// //     title: '兑换成功'
+// // })
+// //         } else {
+// //           // 积分不够，弹出兑换失败提示
+// //           Swal.fire('兑换失败', '积分不足，无法兑换！', 'error');
+// //         }
+// //       }
+// //     });
+//   });
+</script>
+
+
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("./images/1.jpg");
+            background-size: cover;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            /* flex-direction: column; */
+            align-items: center;
+            justify-content: space-evenly;
+            margin-top: 35%;
+        }
+
+        .button {
+            display: block;
+            width: 100px;
+            height: 40px;
+            /* background-color: #EADFB9; */
+            background: linear-gradient(to right, #e3b978, #f0a356);
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .button:hover {
+            background-color: #0052a3;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="cdkey.html" class="button">CDKEY兑换</a>
+        <a href="recharge.html" class="button">充值查询</a>
+        <a href="query.html" class="button">积分商城</a>
+    </div>
+</body>
+
+</html>
